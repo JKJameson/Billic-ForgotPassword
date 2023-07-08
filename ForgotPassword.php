@@ -68,12 +68,13 @@ class ForgotPassword {
 			<tr><td align="right"><b>New Password:</b></td><td><input type="password" class="form-control" name="password" size="20" /></td></tr>
 			<tr><td align="right"><b>Repeat Password:</b></td><td><input type="password" class="form-control" name="password2" size="20" /></td></tr>
 			<tr><td><img src="/Captcha/<?php echo time(); ?>" width="150" height="75" alt="CAPTCHA"></td><td align="center">Enter the code you see<br><input type="text" class="form-control" name="captcha" size="6" style="text-align:center;width:250px" /></td></td></tr>
-			<tr><td colspan="2" align="center"><input type="submit" class="btn btn-default" name="change" value="Change Password &raquo;" /></td></tr>
+			<tr><td colspan="2" align="center"><input type="submit" class="btn btn-primary" name="change" value="Change Password &raquo;" /></td></tr>
 			</table>
 			</form>
 			<?php
 			exit;
 		}
+		$sent = false;
 		if (isset($_POST['reset'])) {
 			if (empty($_POST['email'])) {
 				$billic->errors[] = 'Email is required';
@@ -138,9 +139,9 @@ class ForgotPassword {
 ?>
 	<form method="POST" name="login">
 	<table>
-	<tr><td align="right"><b>Email Address:</b></td><td><input type="text" class="form-control" name="email" size="20" value="<?php echo safe($_POST['email']); ?>" /></td></tr>
+	<tr><td align="right"><b>Email Address:</b></td><td><input type="text" class="form-control" name="email" size="20" value="<?php echo @safe($_POST['email']); ?>" /></td></tr>
 	<tr><td><img src="/Captcha/<?php echo time(); ?>" width="150" height="75" alt="CAPTCHA"></td><td align="center">Enter the code you see<br><input type="text" class="form-control" name="captcha" size="6" style="text-align:center;width:150px" /></td></td></tr>
-	<tr><td colspan="2" align="center"><input type="submit" class="btn btn-default" name="reset" value="Send Email &raquo;" /></td></tr>
+	<tr><td colspan="2" align="center"><input type="submit" class="btn btn-primary" name="reset" value="Send Email &raquo;" /></td></tr>
 	</table>
 	</form>
 	<?php
