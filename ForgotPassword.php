@@ -27,7 +27,7 @@ class ForgotPassword {
 						}
 					}
 					if (empty($billic->errors)) {
-						if ($_SESSION['captcha'] != $_POST['captcha']) {
+						if (strtolower($_SESSION['captcha']) !== strtolower($_POST['captcha'])) {
 							unset($_SESSION['captcha']);
 							$billic->errors[] = 'Captcha code invalid, please try again';
 						}
@@ -83,7 +83,7 @@ class ForgotPassword {
 				$billic->errors[] = 'Captcha is required';
 			}
 			if (empty($billic->errors)) {
-				if ($_SESSION['captcha'] != $_POST['captcha']) {
+				if (strtolower($_SESSION['captcha']) !== strtolower($_POST['captcha'])) {
 					unset($_SESSION['captcha']);
 					$billic->errors[] = 'Captcha code invalid, please try again';
 				}
