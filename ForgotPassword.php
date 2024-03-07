@@ -27,7 +27,7 @@ class ForgotPassword {
 						}
 					}
 					if (empty($billic->errors)) {
-						if (strtolower($_SESSION['captcha']) !== strtolower($_POST['captcha'])) {
+						if (!isset($_SESSION['captcha']) || strtolower($_SESSION['captcha']) !== strtolower($_POST['captcha'])) {
 							unset($_SESSION['captcha']);
 							$billic->errors[] = 'Captcha code invalid, please try again';
 						}
